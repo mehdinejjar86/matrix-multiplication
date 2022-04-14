@@ -16,9 +16,7 @@ http://matrixmultiplication.xyz/
 
 `
 #define SIZE 3
-
 #define MSy1 5
-
 #define MSx2 4
 `
 
