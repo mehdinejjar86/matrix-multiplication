@@ -16,7 +16,12 @@ http://matrixmultiplication.xyz/
 
 `
 #define SIZE 3
+
 #define MSy1 5
+
 #define MSx2 4
 `
 
+This are the sizes of the matrices (just so you can keep track of the code). VLA is not recommended. However, it is necessary to make sure to raize an error when the size is different (Y-axis of matrix 1 and X-axis of matrix 2) for both matrices.
+
+Have a wonderful day!
