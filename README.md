@@ -9,8 +9,8 @@ This code is susceptible to modification ( Adding VLA/ Dynamic Memory Allocation
 
 Allows to do a dot product for matrices in C with different Shape but in respect of the rule of the dot product (Matrices Sizes/Shapes).
 
-[Here is a way to understand the logic behind it more clearly in a visualized way.]
-http://matrixmultiplication.xyz/
+[Here is a way to understand the logic behind it more clearly in a visualized way.]http://matrixmultiplication.xyz/
+
 
 ## Breaking Down the Code
 
