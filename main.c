@@ -1,89 +1,114 @@
 #include <stdio.h>
-#define SIZE 3
-
-#define MSy1 5
-#define MSx1 3
-#define MSx2 4
-#define MSy2 3
 
 int main()
 {
+    // m1x m1y defines the size of matrix 1
+    int m1x, m1y, m2x, m2y;
 
-    int m1[MSy1][SIZE];
-    int m2[SIZE][MSx2];
-    int p[MSy1][MSx2];
+    // Asking the user to enter the size of the matrices
+    printf("(NOTE: X-axis of matrix 1 must be equal to Y-axis of matrix 2)");
+    do
+    {
+        printf("\nPlease enter the X-axis size of Matrix 1: ");
+        scanf("%d", &m1x);
+
+        printf("Please enter the Y-axis size of Matrix 1: ");
+        scanf("%d", &m1y);
+
+        printf("(NOTE: X-axis of matrix 1 must be equal to Y-axis of matrix 2)"
+               "\nPlease enter the X-axis size of Matrix 2: ");
+        scanf("%d", &m2x);
+
+        printf(
+            "Please enter the Y-axis size of Matrix 2: ");
+        scanf("%d", &m2y);
+
+    } while (m1x != m2y); // Making sure the user enter size of X-axis of matrix 1 equal to the size of Y-axis of matrix 2
+
 
     int i, j, k;
 
+
+    // Creating our Matrices along with the final matrix (product result)
+    int **matrix1 = (int **)malloc(m1y * sizeof(int *));
+    for (i = 0; i < m1y; i++)
+        matrix1[i] = (int *)malloc(m1x * sizeof(int));
+
+    int **matrix2 = (int **)malloc(m2y * sizeof(int *));
+    for (i = 0; i < m2y; i++)
+        matrix2[i] = (int *)malloc(m2x * sizeof(int));
+
+    int **product = (int **)malloc(m1y * sizeof(int *));
+    for (i = 0; i < m2y; i++)
+        matrix2[i] = (int *)malloc(m2x * sizeof(int));
+
     // Prompting the user to fill the matrix
-    for (i = 0; i < MSy1; i++)
+    for (i = 0; i < m1y; i++)
     {
-        for (j = 0; j < SIZE; j++)
+        for (j = 0; j < m1x; j++)
         {
             printf("Enter the element [%d][%d]: ", i, j);
-            scanf("%d", &m1[i][j]);
+            scanf("%d", &matrix1[i][j]);
         }
     }
 
     // Displaying the matrix to the user
-    for (i = 0; i < MSy1; i++)
+    for (i = 0; i < m1y; i++)
     {
         printf("|\t");
-        for (j = 0; j < SIZE; j++)
+        for (j = 0; j < m1x; j++)
         {
-            printf("%d\t", m1[i][j]);
+            printf("%d\t", matrix1[i][j]);
         }
         printf("|\n");
     }
 
     // Prompting the user to fill the matrix
-    for (i = 0; i < SIZE; i++)
+    for (i = 0; i < m2y; i++)
     {
-        for (j = 0; j < MSx2; j++)
+        for (j = 0; j < m2x; j++)
         {
             printf("Enter the element [%d][%d]: ", i, j);
-            scanf("%d", &m2[i][j]);
+            scanf("%d", &matrix2[i][j]);
         }
     }
 
     // Displaying the matrix to the user
-    for (i = 0; i < SIZE; i++)
+    for (i = 0; i < m2y; i++)
     {
         printf("|\t");
-        for (j = 0; j < MSx2; j++)
+        for (j = 0; j < m2x; j++)
         {
-            printf("%d\t", m2[i][j]);
+            printf("%d\t", matrix2[i][j]);
         }
         printf("|\n");
     }
 
-    
     // Dot product algorithm
-    for (k = 0; k < MSy1; k++)
+    for (k = 0; k < m1y; k++)
     {
-        for (i = 0; i < MSx2; i++)
+        for (i = 0; i < m2x; i++)
         {
-            int product = 0;
-            for (j = 0; j < SIZE; j++)
+            int element_product = 0;
+            for (j = 0; j < m1y; j++) // m2y can be used as well (For the dot product m2y == m1x)
             {
-                product += m1[k][j] * m2[j][i];
+                element_product += matrix1[k][j] * matrix2[j][i];
             }
-            p[k][i] = product;
+            product[k][i] = element_product;
         }
     }
-
 
     // GUI of the dot product
 
-    printf("\n\nThe Dot Product of the two Matrices.\n");
+    printf("\n\nThe Dot Product of the two Matrices.\n\n");
 
     // Displaying the first matrix to the user
-    for (i = 0; i < MSy1; i++)
+    for (i = 0; i < m1y; i++)
     {
         printf("|\t");
-        for (j = 0; j < MSx1; j++)
+        for (j = 0; j < m1x; j++)
         {
-            printf("%d\t", m1[i][j]);
+            printf("%d\t", matrix1[i][j]);
         }
         printf("|\n");
     }
@@ -91,12 +116,12 @@ int main()
     printf("\nX\n\n");
 
     // Displaying the second matrix to the user
-    for (i = 0; i < MSy2; i++)
+    for (i = 0; i < m2y; i++)
     {
         printf("|\t");
-        for (j = 0; j < MSx2; j++)
+        for (j = 0; j < m2x; j++)
         {
-            printf("%d\t", m2[i][j]);
+            printf("%d\t", matrix2[i][j]);
         }
         printf("|\n");
     }
@@ -104,15 +129,15 @@ int main()
     printf("\n=\n\n");
 
     // Displaying the dot product of matrices to the user
-    for (i = 0; i < MSy1; i++)
+    for (i = 0; i < m1y; i++)
     {
         printf("|\t");
-        for (j = 0; j < MSx2; j++)
+        for (j = 0; j < m2x; j++)
         {
-            printf("%d\t", p[i][j]);
+            printf("%d\t", product[i][j]);
         }
         printf("|\n");
     }
-    
+
     return 0;
 }
