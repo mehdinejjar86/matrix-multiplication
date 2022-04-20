@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main()
 {
@@ -20,15 +19,12 @@ int main()
                "\nPlease enter the X-axis size of Matrix 2: ");
         scanf("%d", &m2x);
 
-        printf(
-            "Please enter the Y-axis size of Matrix 2: ");
+        printf("Please enter the Y-axis size of Matrix 2: ");
         scanf("%d", &m2y);
 
     } while (m1x != m2y); // Making sure the user enter size of X-axis of matrix 1 equal to the size of Y-axis of matrix 2
 
-
     int i, j, k;
-
 
     // Creating our Matrices along with the final matrix (product result)
     int **matrix1 = (int **)malloc(m1y * sizeof(int *));
@@ -40,8 +36,8 @@ int main()
         matrix2[i] = (int *)malloc(m2x * sizeof(int));
 
     int **product = (int **)malloc(m1y * sizeof(int *));
-    for (i = 0; i < m2y; i++)
-        matrix2[i] = (int *)malloc(m2x * sizeof(int));
+    for (i = 0; i < m1y; i++)
+        product[i] = (int *)malloc(m2x * sizeof(int));
 
     // Prompting the user to fill the matrix
     for (i = 0; i < m1y; i++)
@@ -91,7 +87,7 @@ int main()
         for (i = 0; i < m2x; i++)
         {
             int element_product = 0;
-            for (j = 0; j < m1y; j++) // m2y can be used as well (For the dot product m2y == m1x)
+            for (j = 0; j < m2y; j++) // m2y can be used as well (For the dot product m2y == m1x)
             {
                 element_product += matrix1[k][j] * matrix2[j][i];
             }
