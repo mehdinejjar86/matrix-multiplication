@@ -3,7 +3,7 @@
 int main()
 {
     // m1x m1y defines the size of matrix 1
-    int m1x, m1y, m2x, m2y;
+    int m1x=0, m1y=0, m2x=0, m2y=0;
 
     // Asking the user to enter the size of the matrices
     printf("(NOTE: X-axis of matrix 1 must be equal to Y-axis of matrix 2)");
@@ -22,7 +22,7 @@ int main()
         printf("Please enter the Y-axis size of Matrix 2: ");
         scanf("%d", &m2y);
 
-    } while (m1x != m2y); // Making sure the user enter size of X-axis of matrix 1 equal to the size of Y-axis of matrix 2
+    } while (m1x != m2y && m1x <= 0 && && m1y <= 0 && m2x <= 0 && && m2y <= 0); // Making sure the user enter size of X-axis of matrix 1 equal to the size of Y-axis of matrix 2
 
     int i, j, k;
 
