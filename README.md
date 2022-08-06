@@ -1,4 +1,4 @@
-# Linear Algebra Basics: Dot Product and Matrix Multiplication in C
+# Linear Algebra Basics: Matrix Multiplication in C
 
 
 Given the rules of matrix multiplication, we cannot multiply two vectors when they are both viewed as column matrices. If we try to multiply an n×1 matrix with another n×1 matrix, this product is not defined. The number of columns of the first matrix (1) does not match the number of rows of the second matrix (n). To rectify this problem, we can take the transpose of the first vector, turning it into a 1×n row matrix. With this change, the product is well defined; the product of a 1×n matrix with an n×1 matrix is a 1×1 matrix, i.e., a scalar.
