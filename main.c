@@ -81,13 +81,13 @@ int main()
         printf("|\n");
     }
 
-    // Dot product algorithm
+    // Matrix multiplication algorithm
     for (k = 0; k < m1y; k++)
     {
         for (i = 0; i < m2x; i++)
         {
             int element_product = 0;
-            for (j = 0; j < m2y; j++) // m2y can be used as well (For the dot product m2y == m1x)
+            for (j = 0; j < m2y; j++) // m2y can be used as well (For the matrix multiplication m2y == m1x)
             {
                 element_product += matrix1[k][j] * matrix2[j][i];
             }
@@ -95,7 +95,7 @@ int main()
         }
     }
 
-    // GUI of the dot product
+    // Displying the matrix multiplication
 
     printf("\n\nThe Dot Product of the two Matrices.\n\n");
 
@@ -125,7 +125,7 @@ int main()
 
     printf("\n=\n\n");
 
-    // Displaying the dot product of matrices to the user
+    // Displaying the matrix multiplication of matrices to the user
     for (i = 0; i < m1y; i++)
     {
         printf("|\t");
