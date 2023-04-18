@@ -98,7 +98,7 @@ int main()
 
     // Displying the matrix multiplication
 
-    printf("\n\nThe Dot Product of the two Matrices.\n\n");
+    printf("\n\nThe matrix multiplication of the two Matrices.\n\n");
 
     // Displaying the first matrix to the user
     for (i = 0; i < m1y; i++)
