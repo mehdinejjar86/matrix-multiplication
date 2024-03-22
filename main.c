@@ -3,58 +3,60 @@
 
 int main()
 {
-    // m1x m1y defines the size of matrix 1
-    int m1x=0, m1y=0, m2x=0, m2y=0;
+    // nAc number of columns of matrix A, mAr number of rows of matrix A
+    // nBc number of columns of matrix B, mBr number of rows of matrix B
+    int nAc=0, mAr=0, nBc=0, mBr=0;
 
     // Asking the user to enter the size of the matrices
-    printf("(NOTE: X-axis of matrix 1 must be equal to Y-axis of matrix 2)");
+    printf("(NOTE: Number of columns of matrix A must be equal to number of rows of matrix B)\n");
     do
     {
-        printf("\nPlease enter the X-axis size of Matrix 1: ");
-        scanf("%d", &m1x);
+        printf("Please enter number of rows of matrix A: ");
+        scanf("%d", &mAr);
+        
+        printf("Please enter number of columns of matrix A: ");
+        scanf("%d", &nAc);
 
-        printf("Please enter the Y-axis size of Matrix 1: ");
-        scanf("%d", &m1y);
+        printf("\n(NOTE: number of columns of matrix A must be equal to number of rows of matrix B)"
+               "\nPlease enter number of rows of matrix B: ");
+        scanf("%d", &mBr);
 
-        printf("(NOTE: X-axis of matrix 1 must be equal to Y-axis of matrix 2)"
-               "\nPlease enter the X-axis size of Matrix 2: ");
-        scanf("%d", &m2x);
+        printf("Please enter the number of rows of matrix B: ");
+        scanf("%d", &nBc);
 
-        printf("Please enter the Y-axis size of Matrix 2: ");
-        scanf("%d", &m2y);
-
-    } while (m1x != m2y || m1x <= 0 || m1y <= 0 || m2x <= 0 || m2y <= 0); // Making sure the user enter size of X-axis of matrix 1 equal to the size of Y-axis of matrix 2
+    } while (nAc != mBr || nAc <= 0 || mAr <= 0 || nBc <= 0 || mBr <= 0); 
+    // Making sure the user enter number of columns of matrix A equal to number of rows of matrix B
 
     int i, j, k;
 
     // Creating our Matrices along with the final matrix (product result)
-    int **matrix1 = (int **)malloc(m1y * sizeof(int *));
-    for (i = 0; i < m1y; i++)
-        matrix1[i] = (int *)malloc(m1x * sizeof(int));
+    int **matrix1 = (int **)malloc(mAr * sizeof(int *));
+    for (i = 0; i < mAr; i++)
+        matrix1[i] = (int *)malloc(nAc * sizeof(int));
 
-    int **matrix2 = (int **)malloc(m2y * sizeof(int *));
-    for (i = 0; i < m2y; i++)
-        matrix2[i] = (int *)malloc(m2x * sizeof(int));
+    int **matrix2 = (int **)malloc(mBr * sizeof(int *));
+    for (i = 0; i < mBr; i++)
+        matrix2[i] = (int *)malloc(nBc * sizeof(int));
 
-    int **product = (int **)malloc(m1y * sizeof(int *));
-    for (i = 0; i < m1y; i++)
-        product[i] = (int *)malloc(m2x * sizeof(int));
+    int **product = (int **)malloc(mAr * sizeof(int *));
+    for (i = 0; i < mAr; i++)
+        product[i] = (int *)malloc(nBc * sizeof(int));
 
     // Prompting the user to fill the matrix
-    for (i = 0; i < m1y; i++)
+    for (i = 0; i < mAr; i++)
     {
-        for (j = 0; j < m1x; j++)
+        for (j = 0; j < nAc; j++)
         {
-            printf("Enter the element [%d][%d]: ", i, j);
+            printf("Enter the element Row %d Column %d of Matrix A: ", i + 1, j + 1);
             scanf("%d", &matrix1[i][j]);
         }
     }
 
     // Displaying the matrix to the user
-    for (i = 0; i < m1y; i++)
+    for (i = 0; i < mAr; i++)
     {
         printf("|\t");
-        for (j = 0; j < m1x; j++)
+        for (j = 0; j < nAc; j++)
         {
             printf("%d\t", matrix1[i][j]);
         }
@@ -62,20 +64,20 @@ int main()
     }
 
     // Prompting the user to fill the matrix
-    for (i = 0; i < m2y; i++)
+    for (i = 0; i < mBr; i++)
     {
-        for (j = 0; j < m2x; j++)
+        for (j = 0; j < nBc; j++)
         {
-            printf("Enter the element [%d][%d]: ", i, j);
+            printf("Enter the element Row %d Column %d of Matrix B: ", i + 1, j + 1);
             scanf("%d", &matrix2[i][j]);
         }
     }
 
     // Displaying the matrix to the user
-    for (i = 0; i < m2y; i++)
+    for (i = 0; i < mBr; i++)
     {
         printf("|\t");
-        for (j = 0; j < m2x; j++)
+        for (j = 0; j < nBc; j++)
         {
             printf("%d\t", matrix2[i][j]);
         }
@@ -83,12 +85,12 @@ int main()
     }
 
     // Matrix multiplication algorithm
-    for (k = 0; k < m1y; k++)
+    for (k = 0; k < mAr; k++)
     {
-        for (i = 0; i < m2x; i++)
+        for (i = 0; i < nBc; i++)
         {
             int element_product = 0;
-            for (j = 0; j < m2y; j++) // m2y can be used as well (For the matrix multiplication m2y == m1x)
+            for (j = 0; j < mBr; j++) // mBr can be used as well (For the matrix multiplication mBr == m1x)
             {
                 element_product += matrix1[k][j] * matrix2[j][i];
             }
@@ -101,10 +103,10 @@ int main()
     printf("\n\nThe matrix multiplication of the two Matrices.\n\n");
 
     // Displaying the first matrix to the user
-    for (i = 0; i < m1y; i++)
+    for (i = 0; i < mAr; i++)
     {
         printf("|\t");
-        for (j = 0; j < m1x; j++)
+        for (j = 0; j < nAc; j++)
         {
             printf("%d\t", matrix1[i][j]);
         }
@@ -114,10 +116,10 @@ int main()
     printf("\nX\n\n");
 
     // Displaying the second matrix to the user
-    for (i = 0; i < m2y; i++)
+    for (i = 0; i < mBr; i++)
     {
         printf("|\t");
-        for (j = 0; j < m2x; j++)
+        for (j = 0; j < nBc; j++)
         {
             printf("%d\t", matrix2[i][j]);
         }
@@ -127,10 +129,10 @@ int main()
     printf("\n=\n\n");
 
     // Displaying the matrix multiplication of matrices to the user
-    for (i = 0; i < m1y; i++)
+    for (i = 0; i < mAr; i++)
     {
         printf("|\t");
-        for (j = 0; j < m2x; j++)
+        for (j = 0; j < nBc; j++)
         {
             printf("%d\t", product[i][j]);
         }
