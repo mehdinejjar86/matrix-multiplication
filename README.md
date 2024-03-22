@@ -7,7 +7,7 @@ This code is susceptible to modification. It's kept stock as much as possible fo
 
 ## Why use it?
 
-Allows to do matrix multiplication in C with different Shape but in respect of the rule of the matrix multiplication (Matrices Sizes/Shapes).
+Allows to do matrix multiplication in C with different Shapes but with respect of the rule of the matrix multiplication (Matrices Sizes/Shapes).
 
 [Here is a way to understand the logic behind it more clearly in a visualized way.](http://matrixmultiplication.xyz/)
 
@@ -17,7 +17,7 @@ Allows to do matrix multiplication in C with different Shape but in respect of t
 * First, Prompting the user to enter the matrices' size.
 * Dynamic memory allocation for the matrices.
 * Prompting the user to fill in the matrices, and displaying it back to the user.
-* The dot product algorithm takes place.
-* Finally, we display the product for the user.
+* The matrix multiplication algorithm takes place.
+* Finally, we display the multiplication result for the user.
 
 Have a wonderful day!
